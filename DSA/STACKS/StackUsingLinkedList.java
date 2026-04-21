@@ -1,56 +1,65 @@
 import java.util.*;
-
-class StackUsingArrays {
-
-    int stack[];
-    int top = -1;
+class Node{
+    int data;
+    Node next;
+    Node(int data){
+        this.data = data;
+        next = null;
+    }
+}
+public class StackUsingLinkedList {
+    
+    Node head;
     int size;
 
-    StackUsingArrays(int size){
-        this.size = size;
-        stack = new int[size];
+    public StackUsingLinkedList() {
+        head = null;
+        size = 0;
     }
 
-    public void push(int x){
-        if(top >= size-1){
-            System.out.println("Over Flow");
-            return;
-        }
-        top = top + 1;
-        stack[top] = x;
+    public void push(int data){
+        Node x = new Node(data);
+        x.next = head;
+        head = x;
+        size++;
     }
 
-    public void pop(){
-        if(top == -1){
-            System.out.println("Under Flow");
-            return;
+    public int pop(){
+        if(head==null){
+            return -1;
         }
-        int poppedElement = stack[top];
-        top--;
-        System.out.println(poppedElement); 
+        int val = head.data;
+        head = head.next;
+        size--;
+        return val;
     }
 
     public int peek(){
-        if(top == -1){
-            System.out.println("Stack is Empty");
-            return -1; 
+        if(head==null){
+            return -1;
         }
-        return stack[top];
+        int val = head.data;
+        return val;
+    }
+
+    public int size(){
+        return size;
     }
 
     public void printStack(){
-        for(int i=top;i>=0;i--){
-            System.out.print(stack[i]+" ");
+        if(head==null){
+            System.out.println("Stack is Empty");
+        }
+        Node temp = head;
+        while(temp!=null){
+            System.out.print(temp.data+"->");
+            temp = temp.next;
         }
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
-        System.out.print("Enter size: ");
-        int n = sc.nextInt();
-
-        StackUsingArrays s = new StackUsingArrays(n);
+        StackUsingLinkedList s = new StackUsingLinkedList();
 
         int choice;
 
@@ -80,19 +89,20 @@ class StackUsingArrays {
                     if(val != -1)
                         System.out.println(val);
                     break;
-                
+
                 case 4:
                     s.printStack();
                     break;
 
                 case 5:
+                    System.out.println("Exiting...");
                     break;
 
                 default:
                     System.out.println("Invalid choice");
             }
 
-        } while(choice != 4);
+        } while(choice != 5); // ✅ correct exit condition
 
         sc.close();
     }
