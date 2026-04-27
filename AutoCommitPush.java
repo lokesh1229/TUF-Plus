@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.*;
 
 public class AutoCommitPush {
 
@@ -24,12 +25,15 @@ public class AutoCommitPush {
     }
 
     public static void main(String[] args) {
-        if (args.length == 0) {
-            System.out.println("Please provide commit message");
-            return;
-        }
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Please provide commit message");
 
-        String message = args[0];
+        // if (args.length == 0) {
+        //     System.out.println("Please provide commit message");
+        //     return;
+        // }
+
+        String message = sc.nextLine();
 
         runCommand("git init");
         runCommand("git add .");
