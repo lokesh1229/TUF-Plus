@@ -33,7 +33,7 @@ public class AutoCommitPush {
 
         runCommand("git add .");
         runCommand("git commit -m \"" + message + "\"");
-        runCommand("git push");
+        runCommand("git push origin main");
 
         System.out.println("✅ Code committed and pushed successfully!");
     }
