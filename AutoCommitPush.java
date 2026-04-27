@@ -31,10 +31,11 @@ public class AutoCommitPush {
 
         String message = args[0];
 
+        runCommand("git init");
         runCommand("git add .");
         runCommand("git commit -m \"" + message + "\"");
         runCommand("git push origin main");
 
-        System.out.println("✅ Code committed and pushed successfully!");
+        System.out.println("Code committed and pushed successfully!");
     }
 }
