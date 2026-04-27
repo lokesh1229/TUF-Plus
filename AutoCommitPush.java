@@ -32,7 +32,7 @@ public class AutoCommitPush {
         //     System.out.println("Please provide commit message");
         //     return;
         // }
-
+        
         String message = sc.nextLine();
 
         runCommand("git init");
